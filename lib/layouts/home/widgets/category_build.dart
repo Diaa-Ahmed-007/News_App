@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/layouts/home/provider/home_provider.dart';
-import 'package:news_app/layouts/home/widgets/category_details.dart';
 import 'package:news_app/layouts/home/widgets/category_widget.dart';
+import 'package:news_app/layouts/home/widgets/news_page.dart';
 import 'package:news_app/models/category_model.dart';
+import 'package:news_app/shared/api/api_manager.dart';
 import 'package:news_app/style/App_colors.dart';
 import 'package:provider/provider.dart';
 
@@ -39,12 +40,16 @@ class CategoryBuild extends StatelessWidget {
               itemCount: categories.length,
               itemBuilder: (context, index) => GestureDetector(
                 onTap: () {
+                  ApiManager.getSources();
                   provider.changeSelectedWidget(
-                    CategoryDetails(
-                      category: categories[index],
+                    NewsPage(
+                      categoryId: categories[index].id,
                     ),
                   );
+                  provider.setSearchValue('');
+                  provider.changeSearchIconVisabilty(!provider.searchIcon);
                   provider.changeAppBarTitle(categories[index].title);
+                  
                 },
                 child: CategoryWidget(
                   index: index,

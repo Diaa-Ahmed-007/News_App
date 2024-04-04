@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/layouts/home/provider/home_provider.dart';
+import 'package:news_app/layouts/home/screens/article_details_screen.dart';
 import 'package:news_app/layouts/home/screens/home_screen.dart';
 import 'package:news_app/style/theme.dart';
 import 'package:provider/provider.dart';
@@ -21,7 +22,12 @@ class MyApp extends StatelessWidget {
         HomeScreen.routeName: (_) => ChangeNotifierProvider(
               create: (context) => HomeProvider(),
               builder: (context, child) => const HomeScreen(),
-            )
+            ),
+        ArticleDetailsScreen.routeName: (_) => ChangeNotifierProvider(
+              create: (context) => HomeProvider(),
+              builder: (context, child) => const ArticleDetailsScreen(),
+            ),
+      
       },
     );
   }

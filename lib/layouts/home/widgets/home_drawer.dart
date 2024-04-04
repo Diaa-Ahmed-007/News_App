@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/layouts/home/provider/home_provider.dart';
+import 'package:provider/provider.dart';
 
 typedef OnMenuItemClick = void Function(MenuItem item);
 
@@ -7,6 +9,7 @@ class HomeDrawerWidget extends StatelessWidget {
   final OnMenuItemClick itemClick;
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<HomeProvider>(context);
     return Drawer(
       child: Column(
         children: [
@@ -28,6 +31,7 @@ class HomeDrawerWidget extends StatelessWidget {
           GestureDetector(
             onTap: () {
               itemClick(MenuItem.categories);
+              provider.changeSearchIconVisabilty(false);
             },
             child: Row(
               children: [

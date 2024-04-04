@@ -18,10 +18,18 @@ class HomeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  int selectedSource = 0;
-  changeSelectedSource(int newValue) {
-    if (newValue == selectedSource) return;
-    selectedSource = newValue;
+  bool searchIcon = false;
+
+  changeSearchIconVisabilty(bool newVal) {
+    if (newVal == searchIcon) return;
+    searchIcon = newVal;
+    notifyListeners();
+  }
+
+  String searchValue = '';
+  setSearchValue(String? newValue) {
+    if (newValue == searchValue) return;
+    searchValue = newValue??'';
     notifyListeners();
   }
 }
