@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/models/source_model.dart';
+import 'package:news_app/models/SourceResponse/source.dart';
 
 class SourceWidget extends StatelessWidget {
   const SourceWidget({
@@ -7,7 +7,7 @@ class SourceWidget extends StatelessWidget {
     required this.source,
     this.isSelected = false,
   });
-  final SourceModel source;
+  final Source source;
   final bool isSelected;
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class SourceWidget extends StatelessWidget {
             Border.all(width: 2, color: Theme.of(context).colorScheme.primary),
       ),
       child: Text(
-        source.name,
+        source.name??"",
         style: TextStyle(
             color: isSelected
                 ? Colors.white
